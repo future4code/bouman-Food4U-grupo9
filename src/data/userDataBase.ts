@@ -14,4 +14,36 @@ export class UserDB extends BaseDB{
             '${user.getPasswordEncrypted()}'
         )`)
     }
+
+    private mapDbUserToUser(input?: any): User | undefined {
+        return (
+          input &&
+          new User(
+            input.id,
+            input.email,
+            input.passwordEncrypted
+          )
+        );
+      }
+
+    public async login(email: string): Promise<User | undefined> {
+        const result = await this.connection.raw(`
+        SELECT * 
+        FROM ${this.userTableName}
+        WHERE email like '${email}'
+        `)
+
+        return this.mapDbUserToUser(result[0][0])
+    }
+    public async getEmailById(id: string): Promise<string> {
+        const result = await this.connection.raw(`
+        SELECT email 
+        FROM ${this.userTableName}
+        WHERE id like '${id}'
+        `)
+
+        return result[0][0].email
+    }
+
+
 }
