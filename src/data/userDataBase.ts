@@ -41,7 +41,6 @@ export class UserDB extends BaseDB{
         FROM ${this.userTableName}
         WHERE id like '${id}'
         `)
-
         return result[0][0].email
     }
 
