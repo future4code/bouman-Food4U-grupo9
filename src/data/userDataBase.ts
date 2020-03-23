@@ -1,7 +1,8 @@
 import { BaseDB } from "./dataDataBase";
 import { User } from "../business/entities/user";
+import { UserGateway } from "../business/gateway/userGateway";
 
-export class UserDB extends BaseDB{
+export class UserDB extends BaseDB implements UserGateway{
   private userTableName = "users_food4u";
 
   public async createUser(user: User): Promise<void> {
