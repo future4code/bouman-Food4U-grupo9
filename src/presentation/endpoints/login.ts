@@ -9,6 +9,7 @@ export const LoginEndPoint = async (req: Request, res: Response) => {
             email: req.body.email,
             password: req.body.password
         })
+
         res.status(200).send(result);
     } catch(err){
         res.status(err.errorCode || 400).send({
@@ -16,4 +17,3 @@ export const LoginEndPoint = async (req: Request, res: Response) => {
         })
     }
 }
-

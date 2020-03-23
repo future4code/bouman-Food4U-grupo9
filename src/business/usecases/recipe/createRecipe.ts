@@ -4,6 +4,7 @@ import { RecipeGateway } from "../../gateway/recipeGateway";
 
 export class CreateRecipeUC {
     constructor(private recipeGateway: RecipeGateway){}
+
     public async execute(input: CreateRecipeInputUC): Promise<CreateRecipeOutputUC> {
         const id = v4();
 
@@ -13,10 +14,10 @@ export class CreateRecipeUC {
         
         await this.recipeGateway.createRecipe(
             new Recipe(id, input.title, input.recipeDescription, new Date(),input.userId)
-          );
+        );
 
         return{
-            id: id,
+            id,
             title: input.title,
             recipeDescription: input.recipeDescription,
             creationDate: new Date(),
@@ -26,11 +27,10 @@ export class CreateRecipeUC {
 }
 
 export interface CreateRecipeInputUC {
-
     title: string,
     recipeDescription: string,
     userId: string 
-  }
+}
 
 export interface CreateRecipeOutputUC {
     id: string,

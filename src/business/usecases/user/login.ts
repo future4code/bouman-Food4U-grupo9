@@ -1,22 +1,22 @@
-import { UserDB } from "../../../data/userDataBase";
 import * as bcrypt from "bcrypt"
 import * as jwt from "jsonwebtoken"
+import { UserGateway } from "../../gateway/userGateway";
 
 export class LoginUC {
-    constructor(private userDB: UserDB){}
+    constructor(private userGateway: UserGateway){}
     public async execute(input: LoginInputUC): Promise<LoginOutputUC> {
         
-        const user = await this.userDB.login(input.email)
+        const user = await this.userGateway.login(input.email)
 
         if (!user) {
             throw new Error("User not found");
-          }
+        }
 
         const passwordEncrypted = user.getPasswordEncrypted()
         const isPasswordCorrect = bcrypt.compare(input.password,passwordEncrypted)
 
         if (!isPasswordCorrect) {
-            throw new Error("Password don't match");
+            throw new Error("Password doesn't match");
         }
         
         const jwtSecretKey: string = "chave"
@@ -31,7 +31,7 @@ export class LoginUC {
 export interface LoginInputUC {
     email: string;
     password: string
-  }
+}
 
 export interface LoginOutputUC {
     token: string;
