@@ -1,0 +1,9 @@
+{
+    "id": "03fc815c-2f79-4104-b47b-d022a757afc6",
+    "email": "yan.rier@ravier.com",
+    "password": "$2b$10$7gOz34nemm3Tr8X74ok3M.RN1KUqUwLQ/R7QAmEdUKTrj.mwATdO2"
+}
+
+{
+    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiIxODA2YzA3ZS1hNDI1LTRlNTEtOWU1ZC0wNTc1NzU2MjAxMTMiLCJpYXQiOjE1ODQ4MDEzMDUsImV4cCI6MTU4NDgwNDkwNX0.ABvm8M5izvXC0f92fPzULptIf6Au504O9twp62CQIBk"
+}
